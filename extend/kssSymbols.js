@@ -28,26 +28,21 @@ module.exports = function kssSymbolsTwigExtend(mainTwig) {
       // unique name for tag type
       type: 'kssSymbols',
       // regex for matching tag
-      regex: /^kssSymbols\s+(\S+)(?:\s+(\S+))?(?:\s+(\S+))?$/,
+      regex: /^kssSymbols\s+(\S+)(?:\s+(\S+))?$/,
 
       // what type of tags can follow this one.
       next: ['endkssSymbols'], // match the type of the end tag
       open: true,
       compile: function compile(token) {
         // turn the string expression into tokens.
-        token.pattern = Twig.expression.compile.apply(this, [{
+        token.src = Twig.expression.compile.apply(this, [{
           type: Twig.expression.type.expression,
           value: token.match[1],
         }]).stack
 
-        token.cwd = Twig.expression.compile.apply(this, [{
-          type: Twig.expression.type.expression,
-          value: token.match[2],
-        }]).stack
-
         token.source = Twig.expression.compile.apply(this, [{
           type: Twig.expression.type.expression,
-          value: token.match[3],
+          value: token.match[2],
         }]).stack
 
         token.builderPath = Twig.expression.compile.apply(this, [{
@@ -60,19 +55,15 @@ module.exports = function kssSymbolsTwigExtend(mainTwig) {
         return token
       },
       parse: function parse(token, context, chain) {
-        const pattern = Twig.expression.parse.apply(this, [token.pattern, context])
-        const cwd = Twig.expression.parse.apply(this, [token.cwd, context])
+        const src = Twig.expression.parse.apply(this, [token.src, context]).split('in')
+        const pattern = src[0].trim()
+        const cwd = src[1] ? src[1].trim() : './'
         const source = Twig.expression.parse.apply(this, [token.source, context])
-        const builderPath = Twig.expression.parse.apply(this, [token.builderPath, context])
         const tree = {}
 
-        const patternFinal = path.relative(
-          path.join(builderPath, cwd),
-          path.join(path.dirname(source), pattern.trim()),
-        )
-        const cwdFinal = path.join(builderPath, cwd)
+        const cwdFinal = path.join(path.dirname(source), cwd)
 
-        const paths = glob.sync(patternFinal, { cwd: cwdFinal })
+        const paths = glob.sync(pattern, { cwd: cwdFinal })
 
         paths.sort((a, b) => {
           const diffLenght = b.split(path.sep).length - a.split(path.sep).length

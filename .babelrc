@@ -1,0 +1,19 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "useBuiltIns": true
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "transform-strict-mode",
+      {
+        "strict": true
+      }
+    ],
+    "syntax-dynamic-import"
+  ]
+}

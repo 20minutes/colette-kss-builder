@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/eslint .",
-    "build:css": "./node_modules/.bin/stylus src/styl/co-styles.styl -o kss-assets/co-styles.min.css -c",
+    "build:css": "./node_modules/.bin/stylus src/styl/co-styles.styl -o kss-assets/co-styles.min.css -c --include-css",
     "build:js": "./node_modules/.bin/webpack",
     "build": "npm run build:js && npm run build:css"
   },
@@ -13,7 +13,10 @@
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
+    "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
+    "colette": "1.0.0-alpha",
     "eslint": "^4.19.1",
     "eslint-config-20minutes": "^1.0.4",
     "eslint-config-airbnb": "^16.1.0",

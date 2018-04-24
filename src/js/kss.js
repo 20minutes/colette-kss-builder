@@ -1,19 +1,17 @@
-import { highlightAll } from 'prismjs'
 import ScrollSpy from 'scrollspy-js'
-import loadLanguages from 'prismjs/components/index'
 import kssStateGenerator from './modules/kssStateGenerator'
-
-loadLanguages(['twig', 'stylus', 'json'])
 
 const kss = {}
 
 kss.stateGenerator = kssStateGenerator()
 
-highlightAll()
+kss.scrollSpy = new ScrollSpy('body', {
+  nav: '.co_sidebar-active .co_sidebar-children > li > a',
+  className: 'co_sidebar-active',
+})
 
-kss.scrollSpy = new ScrollSpy('#kss-node', {
-  nav: '.kss-nav__menu-child > li > a',
-  className: 'is-in-viewport',
+import(/* webpackChunkName: "kssHighlightLang" */ './modules/kssHighlightLang').then((kssHighlightLang) => {
+  kss.highlightLang = kssHighlightLang
 })
 
 export default kss

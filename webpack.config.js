@@ -2,14 +2,17 @@ const path = require('path')
 
 const config = {
   context: path.resolve(__dirname, './src'),
+  mode: 'production',
   entry: {
+    polyfill: 'babel-polyfill',
     kss: './js/kss.js',
   },
   output: {
     path: path.join(__dirname, './kss-assets'),
     filename: '[name].bundle.js',
+    publicPath: './kss-assets/',
     chunkFilename: '[name].bundle.js',
-    libraryTarget: 'umd',
+    libraryTarget: 'var',
   },
   devServer: {
     contentBase: path.resolve(__dirname, './src'),
@@ -21,19 +24,6 @@ const config = {
         test: /\.jsx?$/, // Match both .js and .jsx files
         use: {
           loader: 'babel-loader',
-          options: {
-            babelrc: false,
-            presets: [
-              ['env', {
-                useBuiltIns: true,
-              }],
-            ],
-            plugins: [
-              ['transform-strict-mode', {
-                strict: true,
-              }],
-            ],
-          },
         },
       },
     ],
