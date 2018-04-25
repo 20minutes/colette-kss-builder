@@ -18,12 +18,17 @@
     {{ styles|raw }}
 </head>
 <body class="co">
-{{ dump(_context) }}
 {#
   Inject svg symboles
   use this inline style to prevent bug from display:none with svg mask and gradients
 #}
-<div style="height:0;width:0;position:absolute;visibility:hidden;overflow:hidden">{% include '../../dist/svg/svg.svg' %}</div>
+{% if options.svg %}
+    <div style="height:0;width:0;position:absolute;visibility:hidden;overflow:hidden">
+        {% for svg in options.svg %}
+            {% include svg|relative(options.builder) %}
+        {% endfor %}
+    </div>
+{% endif %}
 <div class="co_wrapper">
     {# side navigation #}
     <header>
@@ -80,7 +85,6 @@
             {% set sectionElement = loop.first ? 'div' : 'section' %}
             <{{ sectionElement }} id="kssref-{{ section.referenceURI }}" class="co_section-depth-{{ depth }} {% if depth > 1 %} co_content pl2 pr2{% endif %}">
 
-
             {# section header #}
             {% set headerElement = (depth > 6) ? 'h6' : 'h' ~ depth %}
             <{{ headerElement }} class="co_section-h{{ depth }} {% if 1 == depth %} co_content co_pl2 co_pr2{% endif %}">
@@ -133,23 +137,6 @@
                     {% endkssColors %}
                 </ul>
             {% endif %}
-
-            {# section icons #}
-            {% if section.icons %}
-                <ul class="co_icons co_clearfix">
-                    {% kssIcons section.icons %}
-                        {# Available data, but not used in the template:
-                            -> icon.character
-                            -> icon.desc
-                        #}
-                        <li class="co_box">
-                            <div class="co_icons-demo">{{ icon.character }}</div>
-                            <div><span class="co_icons-name">{{ icon.name }}</span></div>
-                        </li>
-                    {% endkssIcons %}
-                </ul>
-            {% endif %}
-
 
             {# section symbols #}
             {% if section.symbols %}

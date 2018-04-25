@@ -10,8 +10,8 @@ kss.scrollSpy = new ScrollSpy('body', {
   className: 'co_sidebar-active',
 })
 
-import(/* webpackChunkName: "kssHighlightLang" */ './modules/kssHighlightLang').then((kssHighlightLang) => {
-  kss.highlightLang = kssHighlightLang
+import(/* webpackChunkName: "kssHighlightCode" */ './modules/kssHighlightCode').then((kssHighlightCode) => {
+  kss.highlightCode = kssHighlightCode
 })
 
 export default kss

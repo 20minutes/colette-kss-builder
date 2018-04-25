@@ -29,19 +29,23 @@ $co-color-body = #f1f1f1
     .section-home
     .subsection
         pre
-            padding 1em
+            padding 0
             margin 0 0 _rem(16px)
             border-radius .25em
             border 1px solid $co-color-borders
             background-color $co-color-tertiary
             font-size 1em
             line-height 1.2
+            overflow hidden
+
+
+            code
+                padding 1em
 
     .wrapper
         padding-top _rem(48px) /* menu button height */
 
-        @media screen and (min-width: 60em) and (max-width: 94em) /* .co_content width + 2 * .co_sidebar width */
-            // when screen size < 1503px the sidebar overlays the content, so we need to add a padding on the wrapper */
+        @media screen and (min-width: 60em) /* .co_content width + 2 * .co_sidebar width */
             // when screen size < 960px the sidebar isn't displayed, so we don't need that padding on the wrapper */
             padding-top 0
             padding-left _rem(240px)
@@ -52,7 +56,7 @@ $co-color-body = #f1f1f1
 
     .content
         width 100%
-        max-width 1024px
+        max-width _rem(1024px)
         margin 0 auto
         padding 0 1.2em
 
@@ -334,34 +338,6 @@ $co-color-body = #f1f1f1
             text-transform uppercase
             color $co-color-primary
 
-    /* icons */
-    .icons
-        padding 0
-        margin 0
-        list-style none
-
-        > li
-            float left
-            width 8em
-            padding 1em .25em .25em
-            margin 0 1em 1em 0
-            border-radius .25em
-            text-align center
-
-        &-demo
-            display block
-            height 1.5em
-            padding .25em
-            margin-bottom .25em
-            font-size 3em
-            line-height @height
-
-        &-name
-            display block
-            border-radius .25em
-            background-color $co-color-body
-            color $co-color-secondary
-
     /* symbols */
     .symbols
         padding 0
@@ -483,4 +459,4 @@ $co-color-body = #f1f1f1
     @require 'node_modules/colette/assets/styl/_helpers/_spaces'
     @require 'node_modules/colette/assets/styl/_helpers/_text'
 
-    @require 'node_modules/prismjs/themes/prism-tomorrow.css'
+    @require 'node_modules/highlight.js/styles/atom-one-dark.css'

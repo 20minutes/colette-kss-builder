@@ -3,6 +3,12 @@
   "version": "0.0.0",
   "description": "The Colette’s Twig.js builder for kss-node.",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "index.twig",
+    "kss-assets/**/*",
+    "extend/**/*"
+  ],
   "scripts": {
     "test": "./node_modules/.bin/eslint .",
     "build:css": "./node_modules/.bin/stylus src/styl/co-styles.styl -o kss-assets/co-styles.min.css -c --include-css",
@@ -16,22 +22,22 @@
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.1",
-    "colette": "1.0.0-alpha",
+    "colette": "1.0.0-alpha.1",
     "eslint": "^4.19.1",
     "eslint-config-20minutes": "^1.0.4",
     "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-babel": "^5.1.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-react": "^7.7.0",
-    "prismjs": "^1.13.0",
+    "highlight.js": "^9.12.0",
     "scrollspy-js": "^0.1.3",
     "stylus": "^0.54.5",
     "webpack": "^4.3.0",
     "webpack-cli": "^2.0.13"
   },
   "peerDependencies": {
-    "kss": "3.x"
+    "kss": "^3"
   },
   "dependencies": {
     "glob": "^7.1.2"
