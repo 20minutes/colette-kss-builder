@@ -40,6 +40,12 @@ class KssBuilderTwig extends KssBuilderBaseTwig {
         describe: 'Title of the style guide',
         default: 'KSS Style Guide',
       },
+      svg: {
+        group: 'File locations:',
+        string: true,
+        path: true,
+        describe: 'Location of svg symbols pack to include in template',
+      },
     })
   }
 
@@ -47,6 +53,17 @@ class KssBuilderTwig extends KssBuilderBaseTwig {
     this.options.extend.push(path.resolve(__dirname, 'extend'))
 
     return super.prepareExtend(templateEngine)
+  }
+
+  normalizeOptions(keys) {
+    if (this.options.custom) {
+      this.options.custom = Array.from(new Set(this.options.custom.concat([
+        'colors',
+        'symbols',
+      ])))
+    }
+
+    return super.normalizeOptions(keys)
   }
 }
 

@@ -1,5 +1,3 @@
-/* jshint node:true */
-
 module.exports = function kssColorsTwigExtend(mainTwig) {
   function hexToRgb(colorHex) {
     let hex = colorHex.replace(/#/, '')
