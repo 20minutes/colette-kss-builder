@@ -10,7 +10,7 @@ cache:
 
 script:
   - npm run build
-  - npm run test --silent
+  - npm run test
 
 deploy:
   - provider: npm
