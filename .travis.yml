@@ -4,11 +4,6 @@ node_js:
   - "6.10"
   - "lts/*"
 
-matrix:
-  include:
-    - node_js: "stable"
-      env: DEPLOY=run
-
 cache:
   directories:
     - "node_modules"
