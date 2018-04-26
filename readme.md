@@ -63,6 +63,6 @@ gulp.task('svg', function () {
       filePath.basename = `symbol-${name.join('-')}`
     }))
     .pipe(svgstore({ inlineSvg: true }))
-    .pipe(gulp.dest('dist/assets/svg/));
+    .pipe(gulp.dest('dist/assets/svg/'));
 }
 ```

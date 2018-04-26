@@ -15,9 +15,10 @@
  */
 const path = require('path')
 
-// We want to extend kss-node's Twig builder so we can add options that
+// We want to extend kss-node’s Twig builder so we can add options that
 // are used in our templates.
-const KssBuilderBaseTwig = require('kss/builder/base/twig')
+// This module is not resolved because it’s a peerDependency.
+const KssBuilderBaseTwig = require('kss/builder/base/twig') // eslint-disable-line import/no-unresolved
 
 /**
  * A kss-node builder that takes input files and builds a style guide using Twig
