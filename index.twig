@@ -195,9 +195,17 @@
                 {% if section.markup %}
                     <div class="co_subsection co_clearfix">
                         <p class="co_subsection-title co_col-md-3">Markup</p>
-                        <div class="co_subsection-content co_markup co_col-md-9">
-                            <pre class="co_pa1 lang-twig"><code>{{ section.markup|escape('html') }}</code></pre>
-                            <pre class="co_pa1 lang-html"><code>{{ section.example|escape('html') }}</code></pre>
+                        <div class="co_markup co_col-md-9 co_tabpanel co_box">
+                            <ul class="co_tabpanel-list" role="tablist">
+                                <li class="co_tabpanel-list-tab" role="tab" aria-controls="kssmarkup-{{ section.referenceURI }}-template">Template</li>
+                                <li class="co_tabpanel-list-tab" role="tab" aria-controls="kssmarkup-{{ section.referenceURI }}-markup">Compiled HTML</li>
+                            </ul>
+                            <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-template">
+                                <pre class="co_pa1 lang-twig"><code>{{ section.markup|escape('html') }}</code></pre>
+                            </div>
+                            <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-markup">
+                                <pre class="co_pa1 lang-html"><code>{{ section.example|beautify|escape('html') }}</code></pre>
+                            </div>
                         </div>
                     </div>
                 {% endif %}
@@ -242,42 +250,5 @@
 <script src="kss-assets/polyfill.bundle.js"></script>
 <script async src="kss-assets/kss.bundle.js"></script>
 {{ scripts|raw }}
-<script>
-    var trigger = document.getElementById('trigger'),
-        sidebar = document.getElementById('sidebar'),
-        overlay = document.getElementById('overlay'),
-        close = document.getElementById('close'),
-        headroom = new colette.headroom(document.querySelector('.co_trigger-sidebar'), {
-            offset: 50,
-            tolerance: 5,
-            classes: {
-                initial: 'co_trigger-sidebar-animated',
-                pinned: 'co_trigger-sidebar-pinned',
-                unpinned: 'co_trigger-sidebar-unpinned'
-            }
-        });
-
-    {# init headroom #}
-    headroom.init();
-
-    {# trigger sidebar #}
-    trigger.addEventListener('click', function () {
-        document.body.style.overflow = 'hidden'; // body should not scroll when sidebar is open
-        sidebar.classList.add('co_sidebar-open');
-        overlay.removeAttribute('aria-hidden');
-    })
-
-    {# close sidebar #}
-    function closeSidebar() {
-        document.body.removeAttribute('style');
-        sidebar.classList.remove('co_sidebar-open');
-        overlay.setAttribute('aria-hidden', true);
-    }
-
-    close.addEventListener('click', closeSidebar);
-    sidebar.addEventListener('click', closeSidebar);
-    overlay.addEventListener('click', closeSidebar);
-
-</script>
 </body>
 </html>

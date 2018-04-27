@@ -1,0 +1,38 @@
+.symbols
+    padding 0
+    margin 0
+    list-style none
+
+    &-symbol
+        float left
+        width 8em
+        padding 1em .25em .25em
+        margin 0 1em 1em 0
+        border-radius .25em
+        text-align center
+
+    &-demo
+        display block
+        padding .25em
+        margin-bottom .25em
+
+    &-name
+        display block
+        border-radius .25em
+        background-color $co-color-body
+        color $co-color-secondary
+
+    &-group
+        clear both
+        float none
+        margin 1em 0 2em
+
+        > ul
+            margin 1em 0
+            border-bottom 1px solid $co-color-borders
+
+        &-title
+            padding 0 0 _rem(12px)
+            font-weight bold
+            font-size 1.4em
+            border-bottom 1px solid $co-color-borders
