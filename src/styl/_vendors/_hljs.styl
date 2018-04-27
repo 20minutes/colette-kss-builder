@@ -1,0 +1,86 @@
+// a11y-dark theme
+// Based on the Tomorrow Night Eighties theme: https://github.com/isagalaev/highlight.js/blob/master/src/styles/tomorrow-night-eighties.css
+// @author: ericwbailey
+
+.hljs
+    display block
+    overflow-x auto
+    background #2b2b2b
+    color #f8f8f2
+    padding .5em
+
+    /* Comment */
+    &-comment
+    &-quote
+        color #d4d0ab
+
+    /* Red */
+    &-variable
+    &-template-variable
+    &-tag
+    &-name
+    &-selector-id
+    &-selector-class
+    &-regexp
+    &-deletion
+        color #ffa07a
+
+    /* Orange */
+    &-number
+    &-built_in
+    &-builtin-name
+    &-literal
+    &-type
+    &-params
+    &-meta
+    &-link
+        color #f5ab35
+
+    /* Yellow */
+    &-attribute
+        color #ffd700
+
+    /* Green */
+    &-string
+    &-symbol
+    &-bullet
+    &-addition
+        color #abe338
+
+    /* Blue */
+    &-title
+    &-section
+        color #00e0e0
+
+    /* Purple */
+    &-keyword
+    &-selector-tag
+        color #dcc6e0
+
+    &-emphasis
+        font-style italic
+
+    &-strong
+        font-weight bold
+
+    @media screen and (-ms-high-contrast: active)
+        &-addition
+        &-attribute
+        &-built_in
+        &-builtin-name
+        &-bullet
+        &-comment
+        &-link
+        &-literal
+        &-meta
+        &-number
+        &-params
+        &-string
+        &-symbol
+        &-type
+        &-quote
+            color highlight
+
+        &-keyword
+        &-selector-tag
+            font-weight bold

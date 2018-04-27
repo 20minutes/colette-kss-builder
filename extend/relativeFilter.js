@@ -1,6 +1,6 @@
 const path = require('path')
 
-module.exports = function kssSymbolsTwigExtend(mainTwig) {
+module.exports = function relativeTwigFilter(mainTwig) {
   mainTwig.extend((Twig) => {
     Twig.exports.extendFilter('relative', (value, args) => {
       if (!args) {

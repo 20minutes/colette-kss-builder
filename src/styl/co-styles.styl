@@ -6,7 +6,6 @@ $co-color-borders = #c7d0dc
 $co-color-background = #a1b1c4
 $co-color-body = #f1f1f1
 
-
 // colette settings
 @require 'node_modules/colette/assets/styl/_settings/*'
 
@@ -19,7 +18,11 @@ $co-color-body = #f1f1f1
     @require 'node_modules/colette/assets/styl/_elements/_btn'
 
     @require 'node_modules/colette/assets/styl/_components/_box'
-    @require 'node_modules/colette/assets/styl/_components/_footerbar'
+
+    @require '_components/_tabpanel'
+    @require '_components/_footerbar'
+    @require '_components/_colors'
+    @require '_components/_symbols'
 
     .body
         background-color $co-color-body
@@ -304,109 +307,6 @@ $co-color-body = #f1f1f1
         > p
             padding-bottom 0
 
-    /* colors */
-    .colors
-        padding 0
-        margin 0
-        list-style none
-
-        > li
-            float left
-            width 16em
-            padding .25em
-            margin 0 1em 1em 0
-            border-radius .25em
-
-        &-demo
-            width 100%
-            height 6em
-            margin-bottom .25em
-            border-radius .25em
-
-        &-name
-        &-hex
-            margin-top 0
-            background-color $co-color-body
-            color $co-color-secondary
-            text-align center
-
-        &-name
-            margin-bottom .25em
-
-        &-hex
-            font-size .9em
-            text-transform uppercase
-            color $co-color-primary
-
-    /* symbols */
-    .symbols
-        padding 0
-        margin 0
-        list-style none
-
-        &-symbol
-            float left
-            width 8em
-            padding 1em .25em .25em
-            margin 0 1em 1em 0
-            border-radius .25em
-            text-align center
-
-        &-demo
-            display block
-            padding .25em
-            margin-bottom .25em
-
-        &-name
-            display block
-            border-radius .25em
-            background-color $co-color-body
-            color $co-color-secondary
-
-        &-group
-            clear both
-            float none
-            margin 1em 0 2em
-
-            > ul
-                margin 1em 0
-                border-bottom 1px solid $co-color-borders
-
-            &-title
-                padding 0 0 _rem(1.2px)
-                font-weight bold
-                font-size 1.4em
-                border-bottom 1px solid $co-color-borders
-
-    /* example */
-    .example-header
-        color $co-color-secondary
-        font-family 'Open Sans'
-        font-size 1.5em
-        font-style italic
-
-    /* expand markup */
-    .expand
-        position absolute
-        z-index 2
-        top 1px
-        right 1px
-        bottom 1px
-        left 1px
-        border-radius .25em
-        background linear-gradient(to top, $co-color-tertiary, rgba($co-color-tertiary, .25))
-
-        .btn
-            position absolute
-            z-index 2
-            bottom 1em
-            left 50%
-            background-color rgba($co-color-primary, .25)
-            color $co-color-tertiary
-            font-size .7em
-            transform translateX(-50%)
-            transition background-color .2s
-
     /* table */
     .table
         width 100%
@@ -448,10 +348,6 @@ $co-color-body = #f1f1f1
         color $co-color-highlight
         font-size .9em
 
-    /* footer */
-    .footerbar
-        border-color $co-color-borders
-        background-color $co-color-primary
 
     @require 'node_modules/colette/assets/styl/_helpers/_block'
     @require 'node_modules/colette/assets/styl/_helpers/_borders'
@@ -459,4 +355,4 @@ $co-color-body = #f1f1f1
     @require 'node_modules/colette/assets/styl/_helpers/_spaces'
     @require 'node_modules/colette/assets/styl/_helpers/_text'
 
-    @require 'node_modules/highlight.js/styles/atom-one-dark.css'
+@require './_vendors/_hljs.styl'
