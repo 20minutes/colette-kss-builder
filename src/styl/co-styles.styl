@@ -13,6 +13,10 @@ $co-color-body = #f1f1f1
 @require 'node_modules/colette/assets/styl/_@blocks/*'
 @require 'node_modules/colette/assets/styl/_mixins/*'
 
+.co
+    background-color $co-color-body
+    color #333
+
 // do not style html elements in doc css
 +prefix-classes('co_')
     @require 'node_modules/colette/assets/styl/_elements/_btn'
@@ -23,10 +27,6 @@ $co-color-body = #f1f1f1
     @require '_components/_footerbar'
     @require '_components/_colors'
     @require '_components/_symbols'
-
-    .body
-        background-color $co-color-body
-        color #333
 
     .markup
     .section-home
@@ -57,32 +57,14 @@ $co-color-body = #f1f1f1
         position relative
         z-index 1
 
-    .content
+    .wrap
+        _p(0 2)
         width 100%
         max-width _rem(1024px)
         margin 0 auto
-        padding 0 1.2em
 
-    .section
-        for i in 1..6
-            &-home h{i}
-            &-h{i}
-                padding 0 0 .25em
-                margin 0 auto
-                font-weight normal
-                color $co-color-secondary
-
-                a
-                    color inherit
-
-                    &:hover
-                        color $co-color-primary
-
-                        strong
-                            color inherit
-
-        /* trigger sidebar */
-    .trigger-sidebar
+    /* trigger sidebar */
+    .navbar
         position fixed
         top 0
         right 0
@@ -118,7 +100,7 @@ $co-color-body = #f1f1f1
             display none
 
 
-        /* sidebar */
+    /* sidebar */
     .sidebar
         position fixed
         z-index 20
@@ -213,28 +195,50 @@ $co-color-body = #f1f1f1
 
     /* section */
     .section
-        /* home */
+        background-color $co-color-body
+        color #333
+
         /* sections */
         &-depth-1
-            padding 3em 0
+            _pt(4)
             background-color darken($co-color-background, 40)
-            color $co-color-tertiary
 
-            a
+
+            &-content
                 color $co-color-tertiary
-                text-decoration underline
 
-                &:hover
-                    text-decoration none
+                a
+                    color $co-color-tertiary
+                    text-decoration underline
+
+                    &:hover
+                        text-decoration none
 
         &-depth-2
-            padding-top 9em
+            _pt(6)
 
         &-depth-3
-            padding-top 6em
+            _pt(4)
 
         &-depth-4
-            padding-top 4em
+            _pt(2)
+
+        for i in 1..6
+            &-home h{i}
+            &-h{i}
+                padding 0 0 .25em
+                margin 0 auto
+                font-weight normal
+                color $co-color-secondary
+
+                a
+                    color inherit
+
+                    &:hover
+                        color $co-color-primary
+
+                        strong
+                            color inherit
 
         /* headings */
         &-h1
@@ -272,14 +276,14 @@ $co-color-body = #f1f1f1
 
     /* subsection */
     .subsection
-        padding .5em 0
+        _p(.5 0)
 
         &-title
             font-weight bold
             margin 0
 
             @media screen and (min-width: 48em)
-                padding-right 1.5em
+                _pr(2)
                 text-align right
 
         &-content
