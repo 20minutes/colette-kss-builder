@@ -3,6 +3,7 @@ const path = require('path')
 const config = {
   context: path.resolve(__dirname, './src'),
   mode: 'production',
+  // mode: 'development',
   entry: {
     polyfill: 'babel-polyfill',
     kss: './js/kss.js',
@@ -12,8 +13,9 @@ const config = {
     filename: '[name].bundle.js',
     publicPath: './kss-assets/',
     chunkFilename: '[name].bundle.js',
-    libraryTarget: 'var',
+    libraryTarget: 'umd',
   },
+  devtool: 'source-map',
   devServer: {
     contentBase: path.resolve(__dirname, './src'),
     historyApiFallback: true,
