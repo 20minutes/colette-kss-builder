@@ -27,10 +27,13 @@ $co-color-body = #f1f1f1
     @require '_components/_footerbar'
     @require '_components/_colors'
     @require '_components/_symbols'
+    @require '_components/_header'
+    @require '_components/_intro'
 
     .markup
-    .section-home
+    .home
     .subsection
+    .intro
         pre
             padding 0
             margin 0 0 _rem(16px)
@@ -41,9 +44,11 @@ $co-color-body = #f1f1f1
             line-height 1.2
             overflow hidden
 
-
             code
+                display block
                 padding 1em
+                white-space nowrap
+                overflow-x auto
 
     .wrapper
         padding-top _rem(48px) /* menu button height */
@@ -54,6 +59,8 @@ $co-color-body = #f1f1f1
             padding-left _rem(240px)
 
     .page
+        background-color $co-color-body
+        color #333
         position relative
         z-index 1
 
@@ -195,25 +202,6 @@ $co-color-body = #f1f1f1
 
     /* section */
     .section
-        background-color $co-color-body
-        color #333
-
-        /* sections */
-        &-depth-1
-            _pt(4)
-            background-color darken($co-color-background, 40)
-
-
-            &-content
-                color $co-color-tertiary
-
-                a
-                    color $co-color-tertiary
-                    text-decoration underline
-
-                    &:hover
-                        text-decoration none
-
         &-depth-2
             _pt(6)
 
@@ -223,35 +211,27 @@ $co-color-body = #f1f1f1
         &-depth-4
             _pt(2)
 
-        for i in 1..6
-            &-home h{i}
-            &-h{i}
-                padding 0 0 .25em
-                margin 0 auto
-                font-weight normal
-                color $co-color-secondary
-
-                a
-                    color inherit
-
-                    &:hover
-                        color $co-color-primary
-
-                        strong
-                            color inherit
-
-        /* headings */
         &-h1
-            font-size 4.8em
-            color $co-color-tertiary
-            line-height 1
+        &-h2
+        &-h3
+        &-h4
+        &-h5
+        &-h6
+            padding 0 0 .25em
+            margin 0 auto
+            font-weight normal
+            color $co-color-secondary
 
-            strong
-                font-size .25em
+            a
                 color inherit
 
+                &:hover
+                    color $co-color-primary
+
+                    strong
+                        color inherit
+
         &-h2
-        &-home h1
             margin-top 0
             margin-bottom 1em
             border-bottom 1px solid $co-color-borders
@@ -259,7 +239,6 @@ $co-color-body = #f1f1f1
             color $co-color-primary
 
         &-h3
-        &-home h2
             font-size 2.1em
 
         &-h4
@@ -273,6 +252,40 @@ $co-color-body = #f1f1f1
 
             &:before
                 content 'section '
+
+    /* homepage */
+    .home
+        _pt(6)
+
+        h1
+        h2
+        h3
+        h4
+        h5
+        h6
+            padding 0 0 .25em
+            margin 0 auto
+            font-weight normal
+            color $co-color-secondary
+
+            a
+                color inherit
+
+                &:hover
+                    color $co-color-primary
+
+                    strong
+                        color inherit
+
+        h1
+            margin-top 0
+            margin-bottom 1em
+            border-bottom 1px solid $co-color-borders
+            font-size 3.6em
+            color $co-color-primary
+
+        h2
+            font-size 2.1em
 
     /* subsection */
     .subsection
