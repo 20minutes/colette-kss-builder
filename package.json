@@ -18,6 +18,7 @@
     "build": "npm run build:js && npm run build:css"
   },
   "devDependencies": {
+    "accedeweb-tablist": "^1.0.2",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^7.1.4",
