@@ -1,6 +1,6 @@
 import ScrollSpy from 'scrollspy-js'
 import Headroom from 'headroom.js'
-import { colette } from 'colette/dist/js/colette.min'
+import Tablist from 'accedeweb-tablist'
 import kssStateGenerator from './modules/kssStateGenerator'
 import kssNav from './modules/kssNav'
 
@@ -32,7 +32,7 @@ import(/* webpackChunkName: "kssHighlightCode" */ './modules/kssHighlightCode').
 
 const markupTabs = []
 Array.prototype.forEach.call(document.querySelectorAll('.co_tabpanel-list'), (item) => {
-  markupTabs.push(new colette.Tablist(item))
+  markupTabs.push(new Tablist(item))
 })
 
 kss.nav = kssNav()
