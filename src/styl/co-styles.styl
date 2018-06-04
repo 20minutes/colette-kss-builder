@@ -340,18 +340,19 @@ $fontload-js ?= false
             tr:nth-child(2n + 1)
                 background-color alpha($co-color-primary, .2)
 
-    /* grid examples */
+    /* grid & list examples */
     .grid-demo
+    .list-demo
         padding-bottom 2em
 
         [class^=g-col-]:empty:before
+        &-item:empty:before
             content attr(class)
             display block
             padding 1em
             border 1px solid $co-color-body
             background-color alpha($co-color-primary, .2)
             text-align center
-
 
     /* markup */
     .markup
