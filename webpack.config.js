@@ -5,7 +5,7 @@ const config = {
   mode: 'production',
   // mode: 'development',
   entry: {
-    polyfill: 'babel-polyfill',
+    polyfill: './js/polyfill.js',
     kss: './js/kss.js',
   },
   output: {
