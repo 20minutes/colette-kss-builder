@@ -6,25 +6,6 @@ Custom Twig.js builder for [kss-node](https://github.com/kss-node/kss-node) desi
 
 KSS is great but some options are missing.
 
-### Colors
-
-To document colors
-
-```scss
-// Colors
-//
-// Color pallet
-//
-// Colors:
-// $color-base:         #4c4d4e - text color
-// $color-base-lighten: #e7e7e7 - lighten version
-// $color-secondary:    #b7b7b7 - secondary text color
-// $color-tertiary:     #878787 - tertiary text color
-// $color-links:        #0091aa - links color
-//
-// Style guide: Colors
-```
-
 ### Symbols
 
 To document SVG symbols
