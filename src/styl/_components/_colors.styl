@@ -1,32 +1,14 @@
 .colors
     padding 0
-    margin 0
     list-style none
+    display flex
+    flex-wrap wrap
+    margin 0 _rem(-6px)
+    align-items stretch
+    justify-content flex-start
 
-    > li
-        float left
-        width 16em
-        padding .25em
-        margin 0 1em 1em 0
-        border-radius .25em
+    &-item
+        width 14em
+        margin 0 _rem(6px) _rem(12px)
 
-    &-demo
-        width 100%
-        height 6em
-        margin-bottom .25em
-        border-radius .25em
 
-    &-name
-    &-hex
-        margin-top 0
-        background-color $co-color-body
-        color $co-color-secondary
-        text-align center
-
-    &-name
-        margin-bottom .25em
-
-    &-hex
-        font-size .9em
-        text-transform uppercase
-        color $co-color-primary

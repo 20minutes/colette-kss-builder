@@ -59,7 +59,6 @@ class KssBuilderTwig extends KssBuilderBaseTwig {
   normalizeOptions(keys) {
     if (this.options.custom) {
       this.options.custom = Array.from(new Set(this.options.custom.concat([
-        'colors',
         'symbols',
       ])))
     }
