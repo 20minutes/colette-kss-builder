@@ -1,6 +1,6 @@
 {
   "name": "colette-kss-builder",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "The Colette’s Twig.js builder for kss-node.",
   "author": "20 Minutes <web-tech@20minutes.fr>",
   "license": "MIT",
