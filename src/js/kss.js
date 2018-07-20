@@ -26,10 +26,6 @@ kss.headroom = new Headroom(document.querySelector('.co_navbar'), {
 // init headroom
 kss.headroom.init()
 
-import(/* webpackChunkName: "kssHighlightCode" */ './modules/kssHighlightCode').then((kssHighlightCode) => {
-  kss.highlightCode = kssHighlightCode
-})
-
 const markupTabs = []
 Array.prototype.forEach.call(document.querySelectorAll('.co_tabpanel-list'), (item) => {
   markupTabs.push(new Tablist(item))

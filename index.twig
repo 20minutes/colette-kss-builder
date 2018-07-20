@@ -232,10 +232,10 @@
                                             <li class="co_tabpanel-list-tab" role="tab" aria-controls="kssmarkup-{{ section.referenceURI }}-template">Template</li>
                                         </ul>
                                         <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-markup">
-                                            <pre class="co_pa1 lang-html"><code>{{ section.example|beautify|escape('html') }}</code></pre>
+                                            <pre class="co_pa1 lang-html"><code>{{ section.example|beautify|hljs('html')|raw }}</code></pre>
                                         </div>
                                         <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-template">
-                                            <pre class="co_pa1 lang-twig"><code>{{ section.markup|escape('html') }}</code></pre>
+                                            <pre class="co_pa1 lang-twig"><code>{{ section.markup|hljs('twig')|raw }}</code></pre>
                                         </div>
                                     </div>
 
