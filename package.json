@@ -13,6 +13,7 @@
   ],
   "scripts": {
     "test": "./node_modules/.bin/eslint .",
+    "prepack": "npm run build",
     "build:css": "./node_modules/.bin/stylus src/styl/co-styles.styl -o kss-assets/co-styles.min.css -c --include-css",
     "build:js": "./node_modules/.bin/webpack",
     "build": "npm run build:js && npm run build:css"
