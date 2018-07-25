@@ -47,5 +47,13 @@
     "details-element-polyfill": "^2.0.1",
     "glob": "^7.1.2",
     "js-beautify": "^1.7.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/20minutes/colette-kss-builder.git"
+  },
+  "bugs": {
+    "url": "https://github.com/20minutes/colette-kss-builder/issues"
+  },
+  "homepage": "https://github.com/20minutes/colette-kss-builder"
 }
