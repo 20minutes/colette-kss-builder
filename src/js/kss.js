@@ -1,6 +1,6 @@
 import ScrollSpy from 'scrollspy-js'
 import Headroom from 'headroom.js'
-import Tablist from 'accedeweb-tablist'
+import Tablist from '@accede-web/tablist'
 import kssStateGenerator from './modules/kssStateGenerator'
 import kssNav from './modules/kssNav'
 
@@ -28,7 +28,9 @@ kss.headroom.init()
 
 const markupTabs = []
 Array.prototype.forEach.call(document.querySelectorAll('.co_tabpanel-list'), (item) => {
-  markupTabs.push(new Tablist(item))
+  const tab = new Tablist(item)
+  tab.mount()
+  markupTabs.push(tab)
 })
 
 kss.nav = kssNav()
