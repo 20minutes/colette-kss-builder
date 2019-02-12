@@ -1,19 +1,19 @@
 {
   "presets": [
     [
-      "env",
+      "@babel/preset-env",
       {
-        "useBuiltIns": true
+        "useBuiltIns": "usage"
       }
     ]
   ],
   "plugins": [
     [
-      "transform-strict-mode",
+      "@babel/plugin-transform-strict-mode",
       {
         "strict": true
       }
     ],
-    "syntax-dynamic-import"
+    "@babel/plugin-syntax-dynamic-import"
   ]
 }

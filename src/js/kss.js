@@ -3,6 +3,7 @@ import Headroom from 'headroom.js'
 import Tablist from '@accede-web/tablist'
 import kssStateGenerator from './modules/kssStateGenerator'
 import kssNav from './modules/kssNav'
+import 'details-element-polyfill' // polyfill for details elements
 
 const kss = {}
 
