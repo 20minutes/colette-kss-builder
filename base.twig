@@ -94,8 +94,9 @@
 {% endblock %}
 
 <!-- scripts -->
-<script src="kss-assets/polyfill.bundle.js"></script>
-<script async src="kss-assets/kss.bundle.js"></script>
+{% block kss_scripts %}
+    <script async src="kss-assets/kss.bundle.js"></script>
+{% endblock %}
 {{ scripts|raw }}
 </body>
 </html>
