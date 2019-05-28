@@ -1,0 +1,61 @@
+{% extends 'base.twig' %}
+
+{% block body %}
+    {% for section in sections %}
+        {# section colors #}
+        {% if section.colors %}
+            <ul class="co_colors">
+                {% for color in section.colors %}
+                    <li class="co_colors-item co_box">
+                        <figure class="co_color">
+                            <div class="co_color-demo" style="background-color:{{ color.color }}"></div>
+                            <figcaption class="co_color-caption">
+                                {% if color.name %}
+                                    <strong class="co_color-name">{{ color.name }}</strong>
+                                {% endif %}
+                                <code class="co_color-hex">{{ color.color }}</code>
+                                {% if color.description %}
+                                    <p class="co_color-desk">{{ color.description }}</p>
+                                {% endif %}
+                            </figcaption>
+                        </figure>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {# section symbols #}
+        {% if section.symbols %}
+            <ul class="co_symbols">
+                {% kssSymbols section.symbols section.source.path %}
+                    {% if list %}
+                        <li class="co_symbols-group">
+                            <p class="co_symbols-group-title">{{ name }}</p>
+                            <ul class="co_symbols">{{ list|raw }}</ul>
+                        </li>
+                    {% else %}
+                        <li class="co_symbols-item co_box">
+                            <figure class="co_symbol">
+                                <div class="co_symbol-demo">
+                                    <svg width="40" height="40"><use xlink:href="#symbol-{{ id }}"></use></svg>
+                                </div>
+                                <figcaption class="co_symbol-name">{{ name }}</figcaption>
+                            </figure>
+                        </li>
+                    {% endif %}
+                {% endkssSymbols %}
+            </ul>
+        {% endif %}
+
+        {# section example #}
+        {% if section.example %}
+            {{ section.example|raw }}
+
+            {# modifiers #}
+            {% if section.modifiers is not empty %}
+                <hr />
+                {{ modifier.markup|raw }}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+{% endblock %}
