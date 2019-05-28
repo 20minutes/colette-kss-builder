@@ -6,6 +6,7 @@ const config = {
   // mode: 'development',
   entry: {
     kss: './js/kss.js',
+    'kss-item': './js/kss-item.js',
   },
   output: {
     path: path.join(__dirname, './kss-assets'),

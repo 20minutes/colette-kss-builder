@@ -53,9 +53,15 @@
 
             {# modifiers #}
             {% if section.modifiers is not empty %}
-                <hr />
-                {{ modifier.markup|raw }}
+                {% for modifier in section.modifiers %}
+                    <hr />
+                    {{ modifier.markup|raw }}
+                {% endfor %}
             {% endif %}
         {% endif %}
     {% endfor %}
+{% endblock %}
+
+{% block kss_scripts %}
+    <script async src="kss-assets/kss-item.bundle.js"></script>
 {% endblock %}
