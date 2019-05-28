@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{{ options.title }}</title>
+
+    <meta name="description" content="">
+    <meta name="generator" content="kss-node">
+    <meta name="viewport" content="width=device-width">
+
+    <script>
+        document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/, 'js');
+        if (window.localStorage && window.localStorage.getItem('colette-font')) {
+            document.documentElement.className += ' webfont';
+        }
+    </script>
+    <link rel="stylesheet" href="kss-assets/co-styles.min.css" />
+    {{ styles|raw }}
+</head>
+<body class="co">
+{#
+  Inject svg symboles
+  use this inline style to prevent bug from display:none with svg mask and gradients
+#}
+{% if options.svg %}
+    <div style="height:0;width:0;position:absolute;visibility:hidden;overflow:hidden">
+        {% for svg in options.svg %}
+            {% include svg|relative(options.builder) %}
+        {% endfor %}
+    </div>
+{% endif %}
+{% block body %}
+    <div class="co_wrapper">
+        {% block navigation %}
+            <header>
+                <div class="co_navbar">
+                    <p class="co_wrap">
+                        <button id="trigger">
+                            <svg width="30" height="30"><use xlink:href="#symbol-menu"/></svg>
+                            <span class="co_mask">Aller au menu</span>
+                        </button>
+                    </p>
+                </div>
+                <ul id="sidebar" class="co_sidebar">
+                    <li class="co_sidebar-brand">
+                        <a href="./">
+                            <svg width="60" height="60"><use xlink:href="#symbol-logo"/></svg>
+                            <span class="co_mask">Retour à l’accueil</span>
+                        </a>
+                    </li>
+                    <li><a href="./">About</a></li>
+                    {% for menu_item in menu %}
+                        <li {% if menu_item.isActive %} class="co_sidebar-active"{% endif %}>
+                            <a href="section-{{ menu_item.referenceURI }}.html">{{ menu_item.header }}</a>
+
+                            {% if menu_item.children|length %}
+                                {# Display 1st level of sub navigation #}
+                                <ul class="co_sidebar-children">
+                                    {% for child in menu_item.children if not child.isGrandChild %}
+                                        <li {% if child.isActive %} class="co_sidebar-active"{% endif %}>
+                                            <a href="section-{{ menu_item.referenceURI ~ '.html#kssref-' ~ child.referenceURI }}">{{ child.header }}</a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </header>
+        {% endblock %}
+
+        {% block content %}
+            <article role="main" class="co_page co_pb6">
+                Base template
+            </article>
+        {% endblock %}
+
+        {% block footer %}
+            <footer class="co_footer co_footerbar">
+                <div class="co_wrap co_clearfix">
+                    <p class="co_float-left">© Copyright <a href="http://www.20minutes.fr">20 Minutes</a></p>
+                    <p class="co_float-right"><a href="https://twitter.com/Tech20Minutes" class="co_ml2"> Follow us </a></p>
+                    <p class="co_float-right"><a href="https://github.com/20minutes/colette" class="co_ml2"> View it on Github</a></p>
+                </div>
+            </footer>
+        {% endblock %}
+    </div>
+
+    {% block overlay %}
+        <span id="overlay" class="co_overlay" aria-hidden="true">
+            <button id="close">✕<span class="co_mask">Fermer</span></button>
+        </span>
+    {% endblock %}
+{% endblock %}
+
+<!-- scripts -->
+<script src="kss-assets/polyfill.bundle.js"></script>
+<script async src="kss-assets/kss.bundle.js"></script>
+{{ scripts|raw }}
+</body>
+</html>
