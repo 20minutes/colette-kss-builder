@@ -22,13 +22,9 @@
   Inject svg symboles
   use this inline style to prevent bug from display:none with svg mask and gradients
 #}
-{% if options.svg %}
-    <div style="height:0;width:0;position:absolute;visibility:hidden;overflow:hidden">
-        {% for svg in options.svg %}
-            {% include svg|relative(options.builder) %}
-        {% endfor %}
-    </div>
-{% endif %}
+{% if options.svgSprite -%}
+    <div aria-hidden="true" style="height:0;width:0;position:absolute;visibility:hidden;overflow:hidden">{{ options.svgSprite|raw }}</div>
+{%- endif %}
 {% block body %}
     <div class="co_wrapper">
         {% block navigation %}

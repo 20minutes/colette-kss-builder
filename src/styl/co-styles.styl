@@ -16,6 +16,24 @@ $fontload-js ?= false
 @require 'node_modules/colette/assets/styl/_@blocks/*'
 @require 'node_modules/colette/assets/styl/_mixins/*'
 
+$lh ?= _rem(27px)
+$lh-gap ?= _rem(2px)
+$lh-division ?= .5
+
+_calcLines($lines, $font-size, $line-height = $lh)
+    if ($lines * $line-height - $font-size) >= $lh-gap
+        return $lines
+    return _calcLines($lines + $lh-division, $line-height, $font-size)
+
+_lines($font-size, $line-height = $lh)
+    return _calcLines(ceil(($font-size / ($line-height * $lh-division)) / $lh-division), $font-size, $line-height)
+
+_lh($number, $line-height = $lh)
+    return $number * $line-height
+
+_getLh($font-size, $line-height = $lh)
+    return _lh(_lines($font-size, $line-height), $line-height)
+
 .co
     background-color $co-color-body
     color #333
@@ -225,7 +243,7 @@ $fontload-js ?= false
         &-h4
         &-h5
         &-h6
-            padding 0 0 .25em
+            padding 0 0 _lh(.25)
             margin 0 auto
             font-weight normal
             color $co-color-secondary
@@ -241,21 +259,25 @@ $fontload-js ?= false
 
         &-h2
             margin-top 0
-            margin-bottom 1em
+            margin-bottom $lh
             border-bottom 1px solid $co-color-borders
-            font-size 3.6em
+            font-size _rem(56px)
+            line-height _getLh(@font-size)
             color $co-color-primary
 
         &-h3
-            font-size 2.1em
+            font-size _rem(34px)
+            line-height _getLh(@font-size)
 
         &-h4
-            font-size 1.8em
+            font-size _rem(28px)
+            line-height _getLh(@font-size)
 
         &-ref
             display block
             color #666
             font-size _rem(12px)
+            line-height _getLh(@font-size)
             text-transform uppercase
 
             &:before
@@ -271,7 +293,7 @@ $fontload-js ?= false
         h4
         h5
         h6
-            padding 0 0 .25em
+            padding 0 0 _lh(.25)
             margin 0 auto
             font-weight normal
             color $co-color-secondary
@@ -289,11 +311,21 @@ $fontload-js ?= false
             margin-top 0
             margin-bottom 1em
             border-bottom 1px solid $co-color-borders
-            font-size 3.6em
+            font-size _rem(56px)
+            line-height _getLh(_rem(56px))
             color $co-color-primary
 
         h2
-            font-size 2.1em
+            font-size _rem(34px)
+            line-height _getLh(_rem(34px))
+
+        p
+        ul
+            margin 0
+            padding-bottom _lh(1)
+
+        hr
+            margin-bottom _lh(1)
 
     /* subsection */
     .subsection
@@ -313,7 +345,7 @@ $fontload-js ?= false
             > p
             > ul
                 margin 0
-                padding-bottom _rem(16px)
+                padding-bottom _lh(1)
 
             > ul > li
                 margin-left 1em
