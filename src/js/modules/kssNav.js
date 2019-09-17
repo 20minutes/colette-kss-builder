@@ -6,7 +6,7 @@ const defaultConfig = {
 }
 
 function KssNav(cfg) {
-  this.config = Object.assign({}, defaultConfig, cfg)
+  this.config = { ...defaultConfig, ...cfg }
 
   this.sidebar = document.getElementById(this.config.sidebarId)
   this.overlay = document.getElementById(this.config.overlayId)
