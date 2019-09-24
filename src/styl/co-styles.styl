@@ -16,9 +16,9 @@ $fontload-js ?= false
 @require 'node_modules/colette/assets/styl/_@blocks/*'
 @require 'node_modules/colette/assets/styl/_mixins/*'
 
-$lh ?= _rem(27px)
-$lh-gap ?= _rem(2px)
-$lh-division ?= .5
+$lh = _rem(27px)
+$lh-gap = _rem(2px)
+$lh-division = .5
 
 _calcLines($lines, $font-size, $line-height = $lh)
     if ($lines * $line-height - $font-size) >= $lh-gap
@@ -26,7 +26,7 @@ _calcLines($lines, $font-size, $line-height = $lh)
     return _calcLines($lines + $lh-division, $line-height, $font-size)
 
 _lines($font-size, $line-height = $lh)
-    return _calcLines(ceil(($font-size / ($line-height * $lh-division)) / $lh-division), $font-size, $line-height)
+    return _calcLines(ceil(($font-size / $lh-division)  / $line-height) * $lh-division, $font-size, $line-height)
 
 _lh($number, $line-height = $lh)
     return $number * $line-height
