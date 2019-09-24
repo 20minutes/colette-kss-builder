@@ -32,7 +32,7 @@ function KssStateGenerator() {
         for (idx = 0, len2 = ref2.length; idx < len2; idx += 1) {
           rule = ref2[idx]
           if ((rule.type === CSSRule.STYLE_RULE) && pseudos.test(rule.selectorText)) {
-            this.insertRule(rule.cssText.replace(pseudos, matched => matched.replace(/:/g, '.pseudo-class-')))
+            this.insertRule(rule.cssText.replace(pseudos, (matched) => matched.replace(/:/g, '.pseudo-class-')))
           }
           pseudos.lastIndex = 0
         }

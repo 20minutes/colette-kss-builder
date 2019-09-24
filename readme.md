@@ -22,28 +22,11 @@ To document SVG symbols
 
 A new option is added to KSS to include SVG symbols bundle in KSS template.
 
-```json
-{
-  "svg": "dist/assets/svg/svg.svg"
-}
-```
-
-This gulp task can build your SVG symbols pack
-
 ```js
-const gulp = require('gulp')
-const rename = require('gulp-rename')
-const svgstore = require('gulp-svgstore')
-
-gulp.task('svg', function () {
-  return gulp
-    .src('src/svg/**/*', { base: 'src/svg'})
-    .pipe(rename((filePath) => {
-      const name = filePath.dirname !== '.' ? filePath.dirname.split(filePath.sep) : [];
-      name.push(filePath.basename)
-      filePath.basename = `symbol-${name.join('-')}`
-    }))
-    .pipe(svgstore({ inlineSvg: true }))
-    .pipe(gulp.dest('dist/assets/svg/'));
+module.exports = {
+  svgSprite: `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><symbol viewBox="0 0 32 32" id="symbol-social-youtube" xmlns="http://www.w3.org/2000/svg"><path d="M31.3 8.3c-.4-1.4-1.4-2.4-2.8-2.8-2.4-.7-12.5-.7-12.5-.7s-10 0-12.5.7C2.1 5.9 1.1 6.9.7 8.3.2 10.8 0 13.4 0 16c0 2.6.2 5.2.7 7.7.4 1.4 1.4 2.4 2.8 2.8 2.5.7 12.5.7 12.5.7s10 0 12.5-.7c1.4-.4 2.4-1.4 2.8-2.8.5-2.5.7-5.1.7-7.7 0-2.6-.2-5.2-.7-7.7zM12.8 20.8v-9.6l8.4 4.8-8.4 4.8z"/></symbol></svg>`,
+  svgPrefix: 'symbol',
 }
 ```
+
+It’s recommanded to use a tool to build your svg sprite.

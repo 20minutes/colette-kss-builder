@@ -37,7 +37,7 @@
                         <li class="co_symbols-item co_box">
                             <figure class="co_symbol">
                                 <div class="co_symbol-demo">
-                                    <svg width="40" height="40"><use xlink:href="#symbol-{{ id }}"></use></svg>
+                                    <svg width="40" height="40"><use xlink:href="{{ '#' ~ options.svgPrefix|default('') ~ id }}"></use></svg>
                                 </div>
                                 <figcaption class="co_symbol-name">{{ name }}</figcaption>
                             </figure>

@@ -41,11 +41,20 @@ class KssBuilderTwig extends KssBuilderBaseTwig {
         describe: 'Title of the style guide',
         default: 'KSS Style Guide',
       },
-      svg: {
-        group: 'File locations:',
+      svgSprite: {
+        group: 'SVG sprite:',
         string: true,
-        path: true,
-        describe: 'Location of svg symbols pack to include in template',
+        path: false,
+        multiple: false,
+        describe: 'SVG sprite',
+      },
+      svgPrefix: {
+        group: 'SVG sprite:',
+        string: true,
+        path: false,
+        multiple: false,
+        describe: 'Prefix for SVG IDs',
+        default: 'symbol-',
       },
     })
   }
