@@ -10,29 +10,11 @@ $co-color-body = #f1f1f1
 $fontload-js ?= false
 
 // colette settings
-@require 'node_modules/colette/assets/styl/_settings/*'
+@require 'node_modules/colette/src/styl/_settings/*'
 
 // colette mixins and @blocks
-@require 'node_modules/colette/assets/styl/_@blocks/*'
-@require 'node_modules/colette/assets/styl/_mixins/*'
-
-$lh = _rem(27px)
-$lh-gap = _rem(2px)
-$lh-division = .5
-
-_calcLines($lines, $font-size, $line-height = $lh)
-    if ($lines * $line-height - $font-size) >= $lh-gap
-        return $lines
-    return _calcLines($lines + $lh-division, $line-height, $font-size)
-
-_lines($font-size, $line-height = $lh)
-    return _calcLines(ceil(($font-size / $lh-division)  / $line-height) * $lh-division, $font-size, $line-height)
-
-_lh($number, $line-height = $lh)
-    return $number * $line-height
-
-_getLh($font-size, $line-height = $lh)
-    return _lh(_lines($font-size, $line-height), $line-height)
+@require 'node_modules/colette/src/styl/_@blocks/*'
+@require 'node_modules/colette/src/styl/_mixins/*'
 
 .co
     background-color $co-color-body
@@ -40,9 +22,9 @@ _getLh($font-size, $line-height = $lh)
 
 // do not style html elements in doc css
 +prefix-classes('co_')
-    @require 'node_modules/colette/assets/styl/_elements/_btn'
+    @require 'node_modules/colette/src/styl/_elements/_btn'
 
-    @require 'node_modules/colette/assets/styl/_components/_box'
+    @require 'node_modules/colette/src/styl/_components/_box'
 
     @require '_components/_tabpanel'
     @require '_components/_footerbar'
@@ -312,12 +294,12 @@ _getLh($font-size, $line-height = $lh)
             margin-bottom 1em
             border-bottom 1px solid $co-color-borders
             font-size _rem(56px)
-            line-height _getLh(_rem(56px))
+            line-height _getLh(@font-size)
             color $co-color-primary
 
         h2
             font-size _rem(34px)
-            line-height _getLh(_rem(34px))
+            line-height _getLh(@font-size)
 
         p
         ul
@@ -409,11 +391,10 @@ _getLh($font-size, $line-height = $lh)
         color $co-color-highlight
         font-size .9em
 
-
-    @require 'node_modules/colette/assets/styl/_helpers/_block'
-    @require 'node_modules/colette/assets/styl/_helpers/_borders'
-    @require 'node_modules/colette/assets/styl/_helpers/_mask'
-    @require 'node_modules/colette/assets/styl/_helpers/_spaces'
-    @require 'node_modules/colette/assets/styl/_helpers/_text'
+    @require 'node_modules/colette/src/styl/_helpers/_block'
+    @require 'node_modules/colette/src/styl/_helpers/_borders'
+    @require 'node_modules/colette/src/styl/_helpers/_mask'
+    @require 'node_modules/colette/src/styl/_helpers/_spaces'
+    @require 'node_modules/colette/src/styl/_helpers/_text'
 
 @require './_vendors/_hljs.styl'

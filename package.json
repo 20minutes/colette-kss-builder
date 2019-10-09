@@ -29,7 +29,7 @@
     "@babel/preset-env": "^7.6.3",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
-    "colette": "^3.3.0",
+    "colette": "^4.0.1",
     "core-js": "^3.2.1",
     "eslint": "^6.5.1",
     "eslint-config-20minutes": "^1.0.8",
