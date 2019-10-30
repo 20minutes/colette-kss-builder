@@ -5,6 +5,7 @@ $co-color-highlight = #cc3366
 $co-color-borders = #c7d0dc
 $co-color-background = #a1b1c4
 $co-color-body = #f1f1f1
+$co-color-text = #333
 
 // Not important for doc
 $fontload-js ?= false
@@ -18,7 +19,6 @@ $fontload-js ?= false
 
 .co
     background-color $co-color-body
-    color #333
 
 // do not style html elements in doc css
 +prefix-classes('co_')
@@ -68,7 +68,7 @@ $fontload-js ?= false
 
     .page
         background-color $co-color-body
-        color #333
+        color $co-color-text
         position relative
         z-index 1
 
@@ -88,6 +88,7 @@ $fontload-js ?= false
         display flex
         align-items center
         height _rem(48px)
+        color $co-color-text
         background-color darken($co-color-background, 40)
 
         button
@@ -125,6 +126,7 @@ $fontload-js ?= false
         margin 0
         padding-left 0
         width _rem(240px)
+        color $co-color-text
         background-color $co-color-tertiary
         box-shadow 2px 0px 4px -2px $co-color-secondary
         overflow hidden
@@ -268,6 +270,7 @@ $fontload-js ?= false
     /* homepage */
     .home
         _pt(6)
+        color $co-color-text
 
         h1
         h2
@@ -314,6 +317,7 @@ $fontload-js ?= false
         _p(.5 0)
 
         &-title
+            color $co-color-text
             font-weight bold
             margin 0
 
@@ -322,6 +326,7 @@ $fontload-js ?= false
                 text-align right
 
         &-content
+            color $co-color-text
             margin 0
 
             > p
