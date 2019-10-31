@@ -68,7 +68,7 @@
                                 {% for color in section.colors %}
                                     <li class="co_colors-item co_box">
                                         <figure class="co_color">
-                                            <div class="co_color-demo" style="background-color:{{ color.color }}"></div>
+                                            <div class="co_color-demo" style="background-color:{{ color.name starts with '--' ? 'var(' ~ color.name ~ ')' : color.color }}"></div>
                                             <figcaption class="co_color-caption">
                                                 {% if color.name %}
                                                     <strong class="co_color-name">{{ color.name }}</strong>
@@ -149,10 +149,10 @@
                                             <li class="co_tabpanel-list-tab" role="tab" aria-controls="kssmarkup-{{ section.referenceURI }}-template">Template</li>
                                         </ul>
                                         <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-markup">
-                                            <pre class="co_pa1 lang-html"><code>{{ section.example|beautify|hljs('html')|raw }}</code></pre>
+                                            <pre class="lang-html"><code>{{ section.example|beautify|hljs('html')|raw }}</code></pre>
                                         </div>
                                         <div class="co_tabpanel-body" role="tabpanel" id="kssmarkup-{{ section.referenceURI }}-template">
-                                            <pre class="co_pa1 lang-twig"><code>{{ section.markup|hljs('twig')|raw }}</code></pre>
+                                            <pre class="lang-twig"><code>{{ section.markup|hljs('twig')|raw }}</code></pre>
                                         </div>
                                     </div>
 

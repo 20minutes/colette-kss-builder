@@ -34,7 +34,6 @@ KssNav.prototype.bindEvents = function bindEvents() {
   // trigger sidebar
   this.openBtn.addEventListener('click', this.open.bind(this))
   this.closeBtn.addEventListener('click', this.close.bind(this))
-  this.sidebar.addEventListener('click', this.close.bind(this))
   this.overlay.addEventListener('click', this.close.bind(this))
 }
 
