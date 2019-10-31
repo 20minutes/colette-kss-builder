@@ -2,6 +2,7 @@ import ScrollSpy from 'scrollspy-js'
 import Headroom from 'headroom.js'
 import Tablist from '@accede-web/tablist'
 import kssStateGenerator from './modules/kssStateGenerator'
+import KssDarkModeSwitch from './modules/kssDarkModeSwitch'
 import kssNav from './modules/kssNav'
 import 'details-element-polyfill' // polyfill for details elements
 
@@ -32,6 +33,10 @@ Array.prototype.forEach.call(document.querySelectorAll('.co_tabpanel-list'), (it
   const tab = new Tablist(item)
   tab.mount()
   markupTabs.push(tab)
+})
+
+kss.darkModeSwitch = new KssDarkModeSwitch({
+  switchSelector: '.co_switch-darkMode[data-target=html]',
 })
 
 kss.nav = kssNav()

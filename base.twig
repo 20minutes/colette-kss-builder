@@ -30,38 +30,64 @@
         {% block navigation %}
             <header>
                 <div class="co_navbar">
-                    <p class="co_wrap">
-                        <button id="trigger">
+                    <div class="co_wrap co_navbar-layout">
+                        <button class="co_navbar-menuButton" id="trigger">
                             <svg width="30" height="30"><use xlink:href="#symbol-menu"/></svg>
                             <span class="co_mask">Aller au menu</span>
                         </button>
-                    </p>
+                        <div>
+                            Night mode
+                            <button role="switch" class="co_switch co_switch-darkMode" aria-checked="false" data-target="html">
+                                <span class="co_switch-wrap">
+                                    <span class="co_switch-on">On</span>
+                                    <svg class="co_switch-thumb" height="11" width="11">
+                                        <use xlink:href="#symbol-tick"></use>
+                                    </svg>
+                                    <span class="co_switch-off">Off</span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <ul id="sidebar" class="co_sidebar">
-                    <li class="co_sidebar-brand">
+                <div id="sidebar" class="co_sidebar">
+                    <div class="co_sidebar-brand">
                         <a href="./">
                             <svg width="60" height="60"><use xlink:href="#symbol-logo"/></svg>
                             <span class="co_mask">Retour à l’accueil</span>
                         </a>
-                    </li>
-                    <li><a href="./">About</a></li>
-                    {% for menu_item in menu %}
-                        <li {% if menu_item.isActive %} class="co_sidebar-active"{% endif %}>
-                            <a href="section-{{ menu_item.referenceURI }}.html">{{ menu_item.header }}</a>
+                    </div>
+                    <div class="co_pa1 co_align-center">
+                        Night mode
+                        <button role="switch" class="co_switch co_switch-darkMode" aria-checked="false" data-target="html">
+                            <span class="co_switch-wrap">
+                                <span class="co_switch-on">On</span>
+                                <svg class="co_switch-thumb" height="11" width="11">
+                                    <use xlink:href="#symbol-tick"></use>
+                                </svg>
+                                <span class="co_switch-off">Off</span>
+                            </span>
+                        </button>
+                    </div>
+                    <ul>
+                        <li><a href="./">About</a></li>
+                        {% for menu_item in menu %}
+                            <li {% if menu_item.isActive %} class="co_sidebar-active"{% endif %}>
+                                <a href="section-{{ menu_item.referenceURI }}.html">{{ menu_item.header }}</a>
 
-                            {% if menu_item.children|length %}
-                                {# Display 1st level of sub navigation #}
-                                <ul class="co_sidebar-children">
-                                    {% for child in menu_item.children if not child.isGrandChild %}
-                                        <li {% if child.isActive %} class="co_sidebar-active"{% endif %}>
-                                            <a href="section-{{ menu_item.referenceURI ~ '.html#kssref-' ~ child.referenceURI }}">{{ child.header }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
-                            {% endif %}
-                        </li>
-                    {% endfor %}
-                </ul>
+                                {% if menu_item.children|length %}
+                                    {# Display 1st level of sub navigation #}
+                                    <ul class="co_sidebar-children">
+                                        {% for child in menu_item.children if not child.isGrandChild %}
+                                            <li {% if child.isActive %} class="co_sidebar-active"{% endif %}>
+                                                <a href="section-{{ menu_item.referenceURI ~ '.html#kssref-' ~ child.referenceURI }}">{{ child.header }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </header>
         {% endblock %}
 

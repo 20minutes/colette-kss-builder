@@ -1,11 +1,58 @@
-$co-color-primary = #44638a
-$co-color-secondary = #000000 // darkest color
-$co-color-tertiary = #ffffff // lightest color
+$co-color-theme = #44638a
+
+$co-color-black = #000000
+$co-color-white = #ffffff
+
 $co-color-highlight = #cc3366
-$co-color-borders = #c7d0dc
-$co-color-background = #a1b1c4
-$co-color-body = #f1f1f1
-$co-color-text = #333
+
+$co-color-bg-base = #f1f1f1
+$co-color-bg-secondary = #fff
+$co-color-base = #333
+
+$co-color-bg-base-dark = #222
+$co-color-bg-secondary-dark = #333
+$co-color-base-dark = #e1e1e1
+
+:root
+[data-theme=light]
+    --co-light-max: 100%
+    --co-light-min: 0%
+
+    --co-color-min: $co-color-black
+    --co-color-max: $co-color-white
+
+    --co-color-theme: $co-color-theme
+    --co-color-theme-text: $co-color-theme
+    --co-color-theme-foreground: lighten(desaturate($co-color-theme, 30%), 65%)
+    --co-color-theme-muted: lighten(desaturate($co-color-theme, 30%), 50%)
+    --co-color-theme-borders: lighten(desaturate($co-color-theme, 30%), 70%)
+    --co-color-theme-bg: darken(desaturate($co-color-theme, 30%), 40%)
+
+    --co-color-highlight: $co-color-highlight
+
+    --co-color-bg-base: $co-color-bg-base
+    --co-color-bg-secondary: $co-color-bg-secondary
+    --co-color-base: $co-color-base
+
+[data-theme=dark]
+    --co-light-max: 0%
+    --co-light-min: 100%
+
+    --co-color-min: $co-color-white
+    --co-color-max: $co-color-black
+
+    --co-color-theme: $co-color-theme
+    --co-color-theme-text: lighten(saturate($co-color-theme, 30%), 20%)
+    --co-color-theme-foreground: lighten(desaturate($co-color-theme, 30%), 65%)
+    --co-color-theme-muted: lighten(desaturate($co-color-theme, 30%), 50%)
+    --co-color-theme-borders: darken(desaturate($co-color-theme, 40%), 50%)
+    --co-color-theme-bg: lighten($co-color-theme, 20%)
+
+    --co-color-highlight: lighten(saturate($co-color-highlight, 10%), 10%)
+
+    --co-color-bg-base: $co-color-bg-base-dark
+    --co-color-bg-secondary: $co-color-bg-secondary-dark
+    --co-color-base: $co-color-base-dark
 
 // Not important for doc
 $fontload-js ?= false
@@ -18,11 +65,12 @@ $fontload-js ?= false
 @require 'node_modules/colette/src/styl/_mixins/*'
 
 .co
-    background-color $co-color-body
+    background-color var(--co-color-bg-base)
 
 // do not style html elements in doc css
 +prefix-classes('co_')
     @require 'node_modules/colette/src/styl/_elements/_btn'
+    @require 'node_modules/colette/src/styl/_elements/_switch'
 
     @require 'node_modules/colette/src/styl/_components/_box'
 
@@ -44,8 +92,8 @@ $fontload-js ?= false
             padding 0
             margin 0 0 _rem(16px)
             border-radius .25em
-            border 1px solid $co-color-borders
-            background-color $co-color-tertiary
+            border 1px solid var(--co-color-theme-borders)
+            background-color var(--co-color-max)
             font-size 1em
             line-height 1.2
             overflow hidden
@@ -67,8 +115,8 @@ $fontload-js ?= false
             padding-left _rem(240px)
 
     .page
-        background-color $co-color-body
-        color $co-color-text
+        background-color var(--co-color-bg-base)
+        color var(--co-color-base)
         position relative
         z-index 1
 
@@ -85,17 +133,23 @@ $fontload-js ?= false
         right 0
         left 0
         z-index 10
-        display flex
-        align-items center
-        height _rem(48px)
-        color $co-color-text
-        background-color darken($co-color-background, 40)
+        color var(--co-color-max)
+        background-color var(--co-color-theme-bg)
 
-        button
+        &-layout // wrap
+            display flex
+            align-items center
+            justify-content space-between
+            height _rem(48px)
+
+            > *
+                flex 0 0 auto
+
+        &-menuButton
             background-color transparent
 
-        svg
-            fill $co-color-tertiary
+            svg
+                fill var(--co-color-max)
 
         &-animated
             transition all .15s ease-in-out
@@ -106,15 +160,8 @@ $fontload-js ?= false
         &-unpinned
             transform translateY(-100%)
 
-        /* brand */
-        .brand
-            background-color transparent
-            color $co-color-primary
-            font-size 2.7em
-
         @media screen and (min-width: 60em)
             display none
-
 
     /* sidebar */
     .sidebar
@@ -126,9 +173,9 @@ $fontload-js ?= false
         margin 0
         padding-left 0
         width _rem(240px)
-        color $co-color-text
-        background-color $co-color-tertiary
-        box-shadow 2px 0px 4px -2px $co-color-secondary
+        color var(--co-color-base)
+        background-color var(--co-color-bg-secondary)
+        box-shadow 2px 0px 4px -2px alpha($co-color-black, .2)
         overflow hidden
         transition transform .2s
 
@@ -141,6 +188,9 @@ $fontload-js ?= false
             &-open
                 transform translateX(0)
                 overflow-y: auto
+        ul
+            margin 0
+            padding 0
 
         li
             list-style none
@@ -148,11 +198,11 @@ $fontload-js ?= false
         a
             display block
             padding .75em 1.5em
-            background-color rgba($co-color-borders, 0)
+            background-color s('hsla(0, 0%, var(--co-light-min), 0)')
             transition background-color .3s
 
             &:hover
-                background-color rgba($co-color-borders, .4)
+                background-color s('hsla(0, 0%, var(--co-light-min), .1)')
 
         &-children
             padding-left 0
@@ -164,7 +214,7 @@ $fontload-js ?= false
 
         &-active
             > a
-                color $co-color-highlight
+                color var(--co-color-highlight)
 
             ul
                 display block
@@ -182,7 +232,7 @@ $fontload-js ?= false
                 left _rem(240px/2 - 60px/2) /* sidebar width / 2 - logo width / 2 AVOID % here, otherwise it will cause the logo to blink when the scrollbar appears */
                 width _rem(60px)
                 height @width
-                fill $co-color-primary
+                fill var(--co-color-theme-text)
 
     /* overlay */
     .overlay
@@ -193,7 +243,7 @@ $fontload-js ?= false
         right 0
         bottom 0
         left 0
-        background-color rgba(0, 0, 0, .8)
+        background-color alpha($co-color-black, .8)
         opacity 1
         transition opacity .2s
 
@@ -206,7 +256,7 @@ $fontload-js ?= false
             top 1em
             left s('calc(1em + %s)', _rem(240px)) /* 1em margin + sidebar width */
             background-color transparent
-            color $co-color-tertiary
+            color var(--co-color-max)
             font-size 2em
             line-height 1
 
@@ -230,13 +280,13 @@ $fontload-js ?= false
             padding 0 0 _lh(.25)
             margin 0 auto
             font-weight normal
-            color $co-color-secondary
+            color var(--co-color-min)
 
             a
                 color inherit
 
                 &:hover
-                    color $co-color-primary
+                    color var(--co-color-theme-text)
 
                     strong
                         color inherit
@@ -244,10 +294,10 @@ $fontload-js ?= false
         &-h2
             margin-top 0
             margin-bottom $lh
-            border-bottom 1px solid $co-color-borders
+            border-bottom 1px solid var(--co-color-theme-borders)
             font-size _rem(56px)
             line-height _getLh(@font-size)
-            color $co-color-primary
+            color var(--co-color-theme-text)
 
         &-h3
             font-size _rem(34px)
@@ -259,7 +309,7 @@ $fontload-js ?= false
 
         &-ref
             display block
-            color #666
+            color s('hsla(0, 0%, var(--co-light-min), .5)')
             font-size _rem(12px)
             line-height _getLh(@font-size)
             text-transform uppercase
@@ -270,7 +320,7 @@ $fontload-js ?= false
     /* homepage */
     .home
         _pt(6)
-        color $co-color-text
+        color var(--co-color-base)
 
         h1
         h2
@@ -281,13 +331,13 @@ $fontload-js ?= false
             padding 0 0 _lh(.25)
             margin 0 auto
             font-weight normal
-            color $co-color-secondary
+            color var(--co-color-min)
 
             a
                 color inherit
 
                 &:hover
-                    color $co-color-primary
+                    color var(--co-color-theme-text)
 
                     strong
                         color inherit
@@ -295,10 +345,10 @@ $fontload-js ?= false
         h1
             margin-top 0
             margin-bottom 1em
-            border-bottom 1px solid $co-color-borders
+            border-bottom 1px solid var(--co-color-theme-borders)
             font-size _rem(56px)
             line-height _getLh(@font-size)
-            color $co-color-primary
+            color var(--co-color-theme-text)
 
         h2
             font-size _rem(34px)
@@ -317,7 +367,7 @@ $fontload-js ?= false
         _p(.5 0)
 
         &-title
-            color $co-color-text
+            color var(--co-color-base)
             font-weight bold
             margin 0
 
@@ -326,7 +376,7 @@ $fontload-js ?= false
                 text-align right
 
         &-content
-            color $co-color-text
+            color var(--co-color-base)
             margin 0
 
             > p
@@ -339,12 +389,12 @@ $fontload-js ?= false
 
             p > code
                 padding 0.05em .25em
-                background-color lighten($co-color-background, 20)
-                color $co-color-highlight
+                background-color s('hsla(0, 0%, var(--co-light-min), .1)')
+                color var(--co-color-highlight)
 
         &-demo
             padding-bottom _rem(6px)
-            border-bottom 1px solid $co-color-borders
+            border-bottom 1px solid var(--co-color-theme-borders)
 
         &-expand
             cursor pointer
@@ -357,15 +407,15 @@ $fontload-js ?= false
     /* table */
     .table
         width 100%
-        background-color $co-color-tertiary
+        background-color var(--co-color-max)
 
         thead
             tr
-                background-color $co-color-primary
+                background-color var(--co-color-theme)
 
         tbody
             tr:nth-child(2n + 1)
-                background-color alpha($co-color-primary, .2)
+                background-color s('hsla(0, 0%, var(--co-light-max), .2)')
 
     /* grid & list examples */
     .grid-demo
@@ -377,8 +427,9 @@ $fontload-js ?= false
             content attr(class)
             display block
             padding 1em
-            border 1px solid $co-color-body
-            background-color alpha($co-color-primary, .2)
+            border 1px solid var(--co-color-bg-base)
+            background-color var(--co-color-theme)
+            color var(--co-color-theme--foreground)
             text-align center
 
     /* markup */
@@ -386,16 +437,20 @@ $fontload-js ?= false
         position relative
 
         pre
+            _pa(1)
             position relative
             z-index 1
             margin-bottom 0
             overflow hidden
+            border-radius 0
+            border 0
 
     /* source */
     .source
-        color $co-color-highlight
+        color var(--co-color-highlight)
         font-size .9em
 
+    @require 'node_modules/colette/src/styl/_helpers/_align'
     @require 'node_modules/colette/src/styl/_helpers/_block'
     @require 'node_modules/colette/src/styl/_helpers/_borders'
     @require 'node_modules/colette/src/styl/_helpers/_mask'
