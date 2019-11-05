@@ -5,6 +5,7 @@ import kssStateGenerator from './modules/kssStateGenerator'
 import KssDarkModeSwitch from './modules/kssDarkModeSwitch'
 import kssNav from './modules/kssNav'
 import 'details-element-polyfill' // polyfill for details elements
+import '../styl/co-styles.styl' // css
 
 const kss = {}
 

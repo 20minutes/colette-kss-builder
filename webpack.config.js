@@ -1,4 +1,5 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
   context: path.resolve(__dirname, './src'),
@@ -28,8 +29,39 @@ const config = {
           loader: 'babel-loader',
         },
       },
+      {
+        test: /\.styl$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              url: false,
+            },
+          },
+          'postcss-loader',
+          {
+            loader: 'stylus-loader',
+            options: {
+              paths: [
+                'node_modules',
+              ],
+              'include css': true,
+              'resolve url': true,
+              stylus: {
+                preferPathResolver: 'webpack',
+              },
+            },
+          },
+        ],
+      },
     ],
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: '[name].min.css',
+    }),
+  ],
 }
 
 module.exports = config
