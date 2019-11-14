@@ -1,6 +1,6 @@
 {
   "name": "colette-kss-builder",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "description": "The Colette’s Twig.js builder for kss-node.",
   "author": "20 Minutes <web-tech@20minutes.fr>",
   "license": "MIT",
@@ -21,14 +21,14 @@
   },
   "devDependencies": {
     "@accede-web/tablist": "^2.0.1",
-    "@babel/core": "^7.6.4",
+    "@babel/core": "^7.7.2",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-strict-mode": "^7.2.0",
-    "@babel/preset-env": "^7.6.3",
+    "@babel/preset-env": "^7.7.1",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "colette": "^5.0.0-alpha.0",
-    "core-js": "^3.3.5",
+    "core-js": "^3.4.1",
     "css-loader": "^3.2.0",
     "eslint": "^6.6.0",
     "eslint-config-20minutes": "^1.0.8",
@@ -38,7 +38,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.16.0",
     "headroom.js": "^0.10.3",
-    "highlight.js": "^9.15.10",
+    "highlight.js": "^9.16.2",
     "mini-css-extract-plugin": "^0.8.0",
     "postcss-loader": "^3.0.0",
     "postcss-variables-prefixer": "0.0.0-alpha.2",
@@ -53,7 +53,7 @@
   },
   "dependencies": {
     "details-element-polyfill": "^2.4.0",
-    "glob": "^7.1.5",
+    "glob": "^7.1.6",
     "js-beautify": "^1.10.2"
   },
   "repository": {
