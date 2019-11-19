@@ -11,6 +11,7 @@ $co-color-base = #333
 
 $co-color-bg-base-dark = #222
 $co-color-bg-secondary-dark = #333
+$co-color-bg-tertiary-dark = #e7e7e7
 $co-color-base-dark = #e1e1e1
 
 :root
@@ -33,6 +34,9 @@ $co-color-base-dark = #e1e1e1
     --color-bg-base: $co-color-bg-base
     --color-bg-secondary: $co-color-bg-secondary
     --color-base: $co-color-base
+    --color-base-foreground: $co-color-white
+
+    --color-fade: $co-color-bg-tertiary-dark
 
 [data-theme=dark]
     --light-max: 0%
@@ -53,6 +57,9 @@ $co-color-base-dark = #e1e1e1
     --color-bg-base: $co-color-bg-base-dark
     --color-bg-secondary: $co-color-bg-secondary-dark
     --color-base: $co-color-base-dark
+    --color-base-foreground $co-color-base
+
+    --color-fade: lighten(invert($co-color-bg-tertiary-dark), 41)
 
 // Not important for doc
 $fontload-js ?= false
