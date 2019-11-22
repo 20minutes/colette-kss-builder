@@ -3,5 +3,8 @@ module.exports = {
     'postcss-variables-prefixer': {
       prefix: 'co-',
     },
+    'postcss-custom-properties': {
+      preserve: true,
+    },
   },
 }
