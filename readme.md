@@ -30,3 +30,9 @@ module.exports = {
 ```
 
 It’s recommanded to use a tool to build your svg sprite.
+
+## Integrate your local version into Colette
+
+1. Run `npm pack` to generate a compressed `.tgz` file of the project (e.g `colette-kss-builder-5.4.0.tgz`) on the root of the project
+2. On Colette's side, point to that file on the `package.json` and run `npm install`
+3. /!\ Be careful to not commit this file and/or the colette-kss-file path
