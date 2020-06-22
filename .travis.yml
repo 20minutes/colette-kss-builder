@@ -1,26 +1,33 @@
+dist: xenial
+os: linux
 language: node_js
+
+# avoid double Travis build when the PR is created on upstream
+if: |
+    type = pull_request OR \
+    branch = master OR \
+    tag =~ ^v
+
+script:
+  - npm run build
+  - npm test
 
 jobs:
   include:
     - node_js: "10"
     - node_js: "12"
     - node_js: "14"
+    - stage: npm release
+      if: (tag =~ ^v)
+      script: npm run build
+      node_js: "12"
+      deploy:
+        provider: npm
+        skip_cleanup: true
+        email: "web-tech+npm@20minutes.fr"
+        api_key:
+          secure: "fL2j/trCuN3L87dLdDjOy2AnFm3gBy0se5QZk2knucTb9/wOvT7MLgJ9sWAuA6jHo8MKUwRsfags75JsI0wZQYRQ4Tmrb9hH2m7GW9dBoqC7GlCy6V6lZdRr/xNgm01698DYJ/0SpJiC52sEx++Jx1FcwkmWzLhUV1l0hOprSy6XhjicOjG0+qKyn0fHb9uJYpSEeUmpBQ31ewKJssfXZ274gExTJjRw18qii0nm1c0URU2umoOIvM0ipjwMwSQzYdn6VR0fqcoU0uDbha0RTPIisD5MqhwvIzZDq5VEILVYsWla1ZK3/e0eLH43iSBkvdvgrL6vKoYmTykks7GaVu43LAzkZaZBzfdl4mYnwuQ/RW7ggr1Oi9VovE6Wl1Fi4uHQ2L41VjAcU7EH2INUDa2J5Gde5ZVCxBKHqYqHL+8umqCa9IRnyNK71nDZ6SNI4UiSb99OQCWuw/fhV4QCm0zMuDGHUH2q6EB7QgvSuon35erB/tCTgHGke/J6GxQtPrB+1KqpUTON3RMxdc7zdcVGI4wn07PI1M7ngnU1i5jxs4Fw/tbU0E/8RYV52y7MGjxoWXvGhR/j1FhgXYxkQrs6mUgjf8Lfg1xxsDyocGBfLJBDTyXpBxMUhObe6/Smds7tyy/JW6WjIdesYcjW5w/xtS6pBDHbq0+5yUDTEPQ="
+        on:
+          tags: true
   allow_failures:
     - node_js: "14"
-
-cache:
-  directories:
-    - "node_modules"
-
-script:
-  - npm run build
-  - npm test
-
-deploy:
-  - provider: npm
-    skip_cleanup: true
-    email: "web-tech+npm@20minutes.fr"
-    api_key:
-      secure: "fL2j/trCuN3L87dLdDjOy2AnFm3gBy0se5QZk2knucTb9/wOvT7MLgJ9sWAuA6jHo8MKUwRsfags75JsI0wZQYRQ4Tmrb9hH2m7GW9dBoqC7GlCy6V6lZdRr/xNgm01698DYJ/0SpJiC52sEx++Jx1FcwkmWzLhUV1l0hOprSy6XhjicOjG0+qKyn0fHb9uJYpSEeUmpBQ31ewKJssfXZ274gExTJjRw18qii0nm1c0URU2umoOIvM0ipjwMwSQzYdn6VR0fqcoU0uDbha0RTPIisD5MqhwvIzZDq5VEILVYsWla1ZK3/e0eLH43iSBkvdvgrL6vKoYmTykks7GaVu43LAzkZaZBzfdl4mYnwuQ/RW7ggr1Oi9VovE6Wl1Fi4uHQ2L41VjAcU7EH2INUDa2J5Gde5ZVCxBKHqYqHL+8umqCa9IRnyNK71nDZ6SNI4UiSb99OQCWuw/fhV4QCm0zMuDGHUH2q6EB7QgvSuon35erB/tCTgHGke/J6GxQtPrB+1KqpUTON3RMxdc7zdcVGI4wn07PI1M7ngnU1i5jxs4Fw/tbU0E/8RYV52y7MGjxoWXvGhR/j1FhgXYxkQrs6mUgjf8Lfg1xxsDyocGBfLJBDTyXpBxMUhObe6/Smds7tyy/JW6WjIdesYcjW5w/xtS6pBDHbq0+5yUDTEPQ="
-    on:
-      tags: true
