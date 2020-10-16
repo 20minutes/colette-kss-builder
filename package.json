@@ -37,7 +37,7 @@
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.16.0",
-    "headroom.js": "^0.11.0",
+    "headroom.js": "^0.12.0",
     "highlight.js": "^10.0.1",
     "mini-css-extract-plugin": "^1.0.0",
     "postcss-custom-properties": "github:ryuran/postcss-custom-properties#build",
