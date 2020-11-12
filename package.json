@@ -45,7 +45,7 @@
     "postcss-variables-prefixer": "^1.0.0",
     "scrollspy-js": "^0.1.3",
     "stylus": "^0.54.7",
-    "stylus-loader": "^3.0.2",
+    "stylus-loader": "^4.3.0",
     "webpack": "^5.1.3",
     "webpack-cli": "^4.0.0"
   },
