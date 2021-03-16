@@ -22,10 +22,10 @@
   "devDependencies": {
     "@accede-web/tablist": "^2.0.1",
     "@babel/core": "^7.12.10",
+    "@babel/eslint-parser": "^7.13.10",
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-strict-mode": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
-    "babel-eslint": "^10.0.3",
     "babel-loader": "^8.2.2",
     "colette": "^5.0.0-alpha.0",
     "core-js": "^3.8.1",
