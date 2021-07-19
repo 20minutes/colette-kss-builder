@@ -29,7 +29,7 @@
     "babel-loader": "^8.2.2",
     "colette": "^5.0.0-alpha.0",
     "core-js": "^3.8.1",
-    "css-loader": "^5.0.0",
+    "css-loader": "^6.1.0",
     "eslint": "^7.15.0",
     "eslint-config-20minutes": "^1.0.8",
     "eslint-config-airbnb": "^18.0.1",
