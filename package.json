@@ -17,7 +17,7 @@
     "build": "./node_modules/.bin/webpack"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12"
   },
   "devDependencies": {
     "@accede-web/tablist": "^2.0.1",
