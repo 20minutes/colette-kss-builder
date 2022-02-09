@@ -43,7 +43,7 @@ const config = {
           {
             loader: 'stylus-loader',
             options: {
-              stylus: {
+              stylusOptions: {
                 paths: ['node_modules'],
                 includeCSS: true,
                 resolveURL: true,
