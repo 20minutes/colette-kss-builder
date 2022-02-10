@@ -30,7 +30,7 @@
     "colette": "^5.0.0-alpha.0",
     "core-js": "^3.8.1",
     "css-loader": "^6.2.0",
-    "eslint": "^7.15.0",
+    "eslint": "^8.8.0",
     "eslint-config-20minutes": "^1.0.8",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-plugin-babel": "^5.3.0",
