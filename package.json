@@ -41,7 +41,7 @@
     "highlight.js": "^11.0.1",
     "mini-css-extract-plugin": "^2.2.0",
     "postcss-custom-properties": "github:ryuran/postcss-custom-properties#build",
-    "postcss-loader": "^6.1.0",
+    "postcss-loader": "^7.0.0",
     "postcss-variables-prefixer": "^1.0.0",
     "scrollspy-js": "^0.1.3",
     "stylus": "^0.57.0",
