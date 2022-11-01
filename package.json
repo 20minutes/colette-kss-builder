@@ -26,7 +26,7 @@
     "@babel/plugin-syntax-dynamic-import": "^7.0.0",
     "@babel/plugin-transform-strict-mode": "^7.12.1",
     "@babel/preset-env": "^7.12.11",
-    "babel-loader": "^8.2.2",
+    "babel-loader": "^9.0.1",
     "colette": "^5.0.0-alpha.0",
     "core-js": "^3.8.1",
     "css-loader": "^6.2.0",
